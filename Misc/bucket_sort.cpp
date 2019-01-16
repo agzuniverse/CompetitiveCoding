@@ -8,13 +8,14 @@ using namespace std;
 
 int main()
 {
-    int n, input;
+    int n;
+    float input;
     cin >> n;
     vector<vector<float>> b(n);
     for (int i = 0; i < n; i++)
     {
         cin >> input;
-        b[input * n].push_back(input);
+        b[(int)(input * n)].push_back(input);
     }
     for (int i = 0; i < n; i++)
     {
