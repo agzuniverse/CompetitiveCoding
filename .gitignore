@@ -2,3 +2,6 @@
 /temp*
 *a.exe
 *a.out
+*.class
+*Solution.java
+*FastScanner.java
