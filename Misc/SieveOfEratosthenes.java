@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+zimport java.util.ArrayList;
 import java.util.Scanner;
 
 public class SieveOfEratosthenes {
