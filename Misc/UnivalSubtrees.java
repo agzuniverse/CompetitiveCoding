@@ -25,14 +25,22 @@ public class UnivalSubtrees {
         root.right.right = new Node(0);
         root.right.left.left = new Node(1);
         root.right.left.right = new Node(1);
-        System.out.println(Integer.toString(countUnivalTrees(root)));
+        count=0;
+        countUnivalTrees(root);
+        System.out.println(count);
     }
 
-    public static int countUnivalTrees(Node root) {
-        if (root.left == null && root.right == null)
-            return 1;
-        if (root.left.data == root.data && root.right.data == root.data)
-            return countUnivalTrees(root.left) + countUnivalTrees(root.right) + 1;
-        return countUnivalTrees(root.left) + countUnivalTrees(root.right);
+    static int count;
+
+    public static boolean countUnivalTrees(Node root) {
+        if (root.left == null && root.right == null){
+            count++;
+            return true;
+        }
+        if (countUnivalTrees(root.left) && countUnivalTrees(root.right) && root.left.data == root.data && root.right.data == root.data){
+            count++;
+            return true;
+        }
+        return false;
     }
 }
