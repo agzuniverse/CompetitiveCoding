@@ -1,5 +1,6 @@
 '''
 Calculate minimum edit distance between 2 strings
+This is also called Levenshtein distance.
 
 The edit distance increases by 1 each time the following operations are performed:
 
