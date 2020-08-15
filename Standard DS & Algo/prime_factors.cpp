@@ -12,16 +12,23 @@ using namespace std;
 void primes(int n)
 {
     vector<int> f;
-    for (int i = 2; i <= n;)
+    while (n % 2 == 0)
+    {
+        f.push_back(2);
+        n /= 2;
+    }
+    for (int i = 3; i * i <= n; i += 2)
     {
         if (n % i == 0)
         {
             f.push_back(i);
             n /= i;
-            continue;
         }
-        i++;
     }
+    // It is possible for a number n to have a single prime factor greater than sqrt(n)
+    // In that case, this condition is triggered.
+    if (n > 2)
+        f.push_back(n);
     for (auto e : f)
         cout << e << " ";
 }
