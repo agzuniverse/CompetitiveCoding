@@ -32,7 +32,10 @@ int main()
 int win(int n, int k)
 {
     if (n == 1)
-        return (1);
-    else
-        return ((win(n - 1, k) + k - 1) % n + 1); //Adjusting to k-1 and n+1
+        return 1;
+    int result = win(n - 1, k) + k;
+    int temp = result % n;
+    if (temp == 0)
+        return n;
+    return temp;
 }
