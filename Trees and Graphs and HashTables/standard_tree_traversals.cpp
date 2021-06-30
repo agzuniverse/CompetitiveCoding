@@ -93,7 +93,38 @@ void postorderIterative(Node *root)
 {
     if (!root)
         return;
-    // TODO
+    stack<Node *> s;
+    Node *temp;
+    do
+    {
+        // Push each element's right node first, then that element itself is pushed.
+        // Then go to the left node.
+        while (root)
+        {
+            if (root->right)
+                s.push(root->right);
+            s.push(root);
+            root = root->left;
+        }
+        // If the 2nd element in the stack is the right child of the 1st element,
+        // take the 2nd element out and set it as root.
+        temp = s.top();
+        s.pop();
+        if (!s.empty() && temp->right == s.top())
+        {
+            root = s.top();
+            s.pop();
+            s.push(temp);
+        }
+        // If the 2nd element in the stack is not the right child of the 1st element, print the 1st element.
+
+        // This is done because after printing the left and right subtrees of a node that is now on the top of the stack,
+        // the 2nd element of the stack will not be that node's right child (since we have already printed it) so we know to print
+        // that node directly.
+        else
+            cout << temp->data;
+
+    } while (!s.empty());
 }
 
 int main()
@@ -125,4 +156,6 @@ int main()
     inorderIterative(root);
     cout << "\nPostorder recursive: ";
     postorder(root);
+    cout << "\nPostorder iterative: ";
+    postorderIterative(root);
 }
